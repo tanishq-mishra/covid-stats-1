@@ -1,0 +1,137 @@
+body {
+  background-color: #282b2e;
+  position: relative;
+  top: 0;
+  bottom: 0;
+}
+
+/* Main Component */
+.main-col {
+  padding: 3vh 0 0 3vw;
+}
+
+.main-heading {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.sub-heading {
+  color: #757575;
+  margin: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #222529;
+  height: 100vh;
+}
+
+.side-heading {
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 400;
+  padding-top: 35px;
+}
+
+.sidebar-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.unselected {
+  background-color: #282B2E;
+  color: #5A5D63;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  width: 6.25em;
+}
+
+.selected {
+  background-color: #282B2E;
+  color: #F0F0F0;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px solid #F6C879;
+  border-radius: 5px;
+  width: 6.25em;
+}
+
+/* Hamburger */
+.menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger {
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::before {
+  transform: translateY(-10px);
+}
+
+.menu-btn__burger::after {
+  transform: translateY(10px);
+}
+
+/* Hamburger Animation */
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+
+/* Map Container  */
+.map-container {
+  margin-top: 10%;
+  border-radius: 40px;
+  overflow: hidden;
+  justify-content: center;
+  justify-self: center;
+  align-self: center;
+  width: max-content;
+  height: 66vh;
+}
+
+.mapboxgl-popup.mapboxgl-popup-anchor-top {
+  opacity: 0;
+}
+
+.mapboxgl-popup.mapboxgl-popup-anchor-top:hover {
+  opacity: 100%;
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
