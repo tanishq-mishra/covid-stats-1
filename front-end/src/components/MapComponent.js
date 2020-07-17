@@ -5,12 +5,8 @@ import { ScatterplotLayer } from '@deck.gl/layers';
 import MapGL, { StaticMap } from 'react-map-gl';
 import axios from 'axios'
 
-
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGFuaXNocW1pc2hyYSIsImEiOiJja2Nub2NxeDkwZGI0MnFsdmk3OXhmbHVqIn0.D978KZ8t0I6T_crSB_OvBQ';
-
-
-
 
 class Map extends Component {
 
@@ -21,15 +17,14 @@ class Map extends Component {
             ],
             viewport: {
                 ...DeckGL.defaultViewport,
-                longitude: -74.006,
-                latitude: 40.7128,
+                longitude: 166.040497,
+                latitude: 19.065773,
                 zoom: 2,
                 width: '67rem',
                 height: '71vh',
             },
         }
     }
-
 
     componentDidMount() {
 
@@ -55,8 +50,6 @@ class Map extends Component {
         });
     }
 
-
-
     render() {
 
         const { viewport } = this.state;
@@ -69,17 +62,14 @@ class Map extends Component {
             radiusMaxPixels: 100,
             lineWidthMinPixels: 1,
             radiusScale: 10,
-            radiusMinPixels: 0.5,
+            radiusMinPixels: 1,
             getPosition: d => { return [d.longitude, d.latitude] },
             getRadius: d => Math.sqrt(d.confirmed * 1000),
             getFillColor: d => d.confirmed < 200000 ? [1, 164, 246] : [253, 62, 88],
             getLineColor: d => [0, 0, 0]
         })
 
-
-
         return (
-
             <div style={{ position: 'relative' }}>
                 <DeckGL
                     {...viewport}
@@ -97,12 +87,9 @@ class Map extends Component {
                             Deaths - ${object.dead}`
                         )
                     }}
-
-
                 >
                     <StaticMap
                         {...viewport}
-
                         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
                         mapStyle="mapbox://styles/mapbox/dark-v9"
                     />

@@ -1,31 +1,15 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 
-
 class Sidebar extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            toggleDiv: 'infected'
+            toggleDiv: 'infected',
         };
 
         this.handleCLick = this.handleClick.bind(this);
-    }
-
-    //js code for animation of the hamburger 
-    componentDidMount() {
-        const menuBtn = document.querySelector('.menu-btn');
-        let menuOpen = false;
-        menuBtn.addEventListener('click', () => {
-            if (!menuOpen) {
-                menuBtn.classList.add('open');
-                menuOpen = true;
-            } else {
-                menuBtn.classList.remove('open');
-                menuOpen = false;
-            }
-        });
     }
 
     handleClick(id) {
@@ -42,20 +26,12 @@ class Sidebar extends Component {
         }
 
         return (
-            <Col className="sidebar" md="3">
+            <Col className="sidebar" xl="3">
                 <Container>
-                    <Row style={{ paddingTop: "10px" }}>
-                        <Col md={{ size: "5" }} style={{ paddingLeft: "0" }}>
-                            <div>
-                                <p className="side-heading">Cases Info</p>
-                            </div>
-                        </Col>
-                        <Col md={{ size: "2", offset: "5" }}>
-                            <div className="menu-btn">
-                                <div className="menu-btn__burger"></div>
-                            </div>
-
-                        </Col>
+                    <Row>
+                        <div>
+                            <p className="side-heading">Cases Info</p>
+                        </div>
                     </Row>
                 </Container>
 
