@@ -118,10 +118,7 @@ body {
   margin-top: 10%;
   border-radius: 40px;
   overflow: hidden;
-  justify-content: center;
-  justify-self: center;
-  align-self: center;
-  width: max-content;
+  width: 71vw;
   height: 66vh;
 }
 

@@ -1,117 +1,121 @@
+/// app.js
 import React, { Component } from 'react';
+import DeckGL from '@deck.gl/react';
+import { ScatterplotLayer } from '@deck.gl/layers';
+import MapGL, { StaticMap } from 'react-map-gl';
 import axios from 'axios'
-import { useState } from 'react';
-import ReactMapGL from 'react-map-gl';
-import '../App.css';
-import { SVGOverlay, Popup } from 'react-map-gl';
-let data = [];
 
+
+// Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGFuaXNocW1pc2hyYSIsImEiOiJja2Nub2NxeDkwZGI0MnFsdmk3OXhmbHVqIn0.D978KZ8t0I6T_crSB_OvBQ';
 
 
 
-function Redraw({ project, long, lat, zoom, infected, }) {
-    const [cx, cy] = project([long, lat]);
-    return <circle cx={cx} cy={cy} r={((zoom * infected)) / 100000 + 5} fill={infected < 60000 ? '#01A4F6' : '#FD3E58'} style={{ opacity: 0.6 }} />;
-}
 
-function RenderPopups() {
-    return data.map((point, index) => {
-        return (
-            <Popup
-                key={index}
-                latitude={point.latitude}
-                longitude={point.longitude}
-                closeButton={true}
-                closeOnClick={false}
-                onClose={() => this.setState({ showPopup: false })}
-                anchor="top"
-                dynamicPosition={false}
-            ></Popup>
-        )
-    })
-}
+class Map extends Component {
 
-
-function PlotPoints(props) {
-    const points = data.map((point, index) => {
-        const zoom = props.zoom;
-        return (
-            <SVGOverlay key={index} zoom={zoom} point={point} redraw={(props) => {
-                return <Redraw
-                    project={props.project}
-                    lat={point.latitude}
-                    long={point.longitude}
-                    zoom={zoom}
-                    infected={point.confirmed}
-
-                />
-            }} />
-        )
-    })
-    return points
-}
-
-
-function Map(props) {
-    const [viewport, setViewport] = useState({
-        width: '67rem',
-        height: '71vh',
-        latitude: props.latitude,
-        longitude: props.longitude,
-        zoom: 8
-    });
-
-
-    return (
-        <ReactMapGL
-            mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
-            mapStyle="mapbox://styles/mapbox/dark-v9"
-            {...viewport}
-            onViewportChange={nextViewport => setViewport(nextViewport)}
-        >
-
-            <PlotPoints zoom={viewport.zoom} />
-            <RenderPopups />
-        </ReactMapGL>
-
-    );
-}
-
-class RenderMap extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            latitude: 0,
-            longitude: 0
+            data: [
+            ],
+            viewport: {
+                ...DeckGL.defaultViewport,
+                longitude: -74.006,
+                latitude: 40.7128,
+                zoom: 2,
+                width: '67rem',
+                height: '71vh',
+            },
         }
     }
 
-    componentDidMount = () => {
 
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                this.setState({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                })
-            });
-        } else {
-            console.log("Not Available");
-        }
-
+    componentDidMount() {
 
         axios.get('/countries').then(response => {
-            data = response.data;
+            this.setState({
+                data: response.data
+            })
         })
+        window.addEventListener('resize', this._resize.bind(this));
+        this._resize();
     }
+
+    _resize() {
+        this._onViewportChange({
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+    }
+
+    _onViewportChange(viewport) {
+        this.setState({
+            viewport: { ...this.state.viewport, ...viewport }
+        });
+    }
+
 
 
     render() {
-        console.log(this.state.longitude)
-        console.log(this.state.latitude)
-        return <Map latitude={this.state.latitude} longitude={this.state.longitude} />
+
+        const { viewport } = this.state;
+        const layer = new ScatterplotLayer({
+            id: 'scatterplot-layer',
+            data: this.state.data,
+            pickable: true,
+            opacity: 0.5,
+            filled: true,
+            radiusMaxPixels: 100,
+            lineWidthMinPixels: 1,
+            radiusScale: 10,
+            radiusMinPixels: 0.5,
+            getPosition: d => { return [d.longitude, d.latitude] },
+            getRadius: d => Math.sqrt(d.confirmed * 1000),
+            getFillColor: d => d.confirmed < 200000 ? [1, 164, 246] : [253, 62, 88],
+            getLineColor: d => [0, 0, 0]
+        })
+
+
+
+        return (
+
+            <div style={{ position: 'relative' }}>
+                <DeckGL
+                    {...viewport}
+                    initialViewState={viewport}
+                    controller={true}
+                    layers={layer}
+                    height='71vh'
+                    width='100rem'
+                    getTooltip={({ object }) => {
+                        return (
+                            object &&
+                            `${object.location}
+                            Infected - ${object.confirmed - object.dead - object.recovered}
+                            Recovered - ${object.recovered}
+                            Deaths - ${object.dead}`
+                        )
+                    }}
+
+
+                >
+                    <StaticMap
+                        {...viewport}
+
+                        mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+                        mapStyle="mapbox://styles/mapbox/dark-v9"
+                    />
+                </DeckGL>
+            </div>
+        );
     }
 }
 
-export default RenderMap;
+export default Map;
+
+
+
+
+
+
