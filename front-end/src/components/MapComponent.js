@@ -13,11 +13,10 @@ class Map extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [
-            ],
+            data: [],
             viewport: {
                 ...DeckGL.defaultViewport,
-                longitude: 166.040497,
+                longitude: 76.040497,
                 latitude: 19.065773,
                 zoom: 2,
                 width: '67rem',
@@ -38,9 +37,10 @@ class Map extends Component {
     }
 
     _resize() {
+        console.log('resized')
         this._onViewportChange({
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: window.innerWidth < 1200 ? '90vw' : '70rem',
+            height: window.innerWidth < 1200 ? '50vh' : window.innerHeight
         });
     }
 
@@ -59,14 +59,13 @@ class Map extends Component {
             pickable: true,
             opacity: 0.5,
             filled: true,
-            radiusMaxPixels: 100,
+            radiusMaxPixels: 200,
             lineWidthMinPixels: 1,
             radiusScale: 10,
             radiusMinPixels: 1,
             getPosition: d => { return [d.longitude, d.latitude] },
             getRadius: d => Math.sqrt(d.confirmed * 1000),
-            getFillColor: d => d.confirmed < 200000 ? [1, 164, 246] : [253, 62, 88],
-            getLineColor: d => [0, 0, 0]
+            getFillColor: d => d.confirmed < 200000 ? [1, 164, 246] : [253, 62, 88]
         })
 
         return (
@@ -76,8 +75,6 @@ class Map extends Component {
                     initialViewState={viewport}
                     controller={true}
                     layers={layer}
-                    height='71vh'
-                    width='100rem'
                     getTooltip={({ object }) => {
                         return (
                             object &&
