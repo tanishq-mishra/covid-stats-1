@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import DeckGL from '@deck.gl/react';
 import { ScatterplotLayer } from '@deck.gl/layers';
-import MapGL, { StaticMap } from 'react-map-gl';
-import axios from 'axios'
+import { StaticMap } from 'react-map-gl';
 
-// Set your mapbox access token here
+
+
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGFuaXNocW1pc2hyYSIsImEiOiJja2Nub2NxeDkwZGI0MnFsdmk3OXhmbHVqIn0.D978KZ8t0I6T_crSB_OvBQ';
 
 class Map extends Component {
@@ -25,22 +25,22 @@ class Map extends Component {
         }
     }
 
-    componentDidMount() {
-
-        axios.get('/countries').then(response => {
-            this.setState({
-                data: response.data
-            })
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            data: nextProps.data
         })
+    }
+
+    componentDidMount() {
         window.addEventListener('resize', this._resize.bind(this));
         this._resize();
     }
 
     _resize() {
-        console.log('resized')
+
         this._onViewportChange({
-            width: window.innerWidth < 1200 ? '90vw' : '70rem',
-            height: window.innerWidth < 1200 ? '50vh' : window.innerHeight
+            width: (window.innerWidth < 1200 || window.innerWidth > 1575) ? '95vw' : '70rem',
+            height: window.innerWidth < 1200 ? '60vh' : window.innerHeight
         });
     }
 
@@ -51,8 +51,8 @@ class Map extends Component {
     }
 
     render() {
-
         const { viewport } = this.state;
+
         const layer = new ScatterplotLayer({
             id: 'scatterplot-layer',
             data: this.state.data,
@@ -69,7 +69,7 @@ class Map extends Component {
         })
 
         return (
-            <div style={{ position: 'relative' }}>
+            <div className='map-inner-container' style={{ position: 'relative' }}>
                 <DeckGL
                     {...viewport}
                     initialViewState={viewport}
