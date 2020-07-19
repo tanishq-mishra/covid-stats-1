@@ -1,18 +1,23 @@
 /// app.js
+
 import React, { Component } from 'react';
 import DeckGL from '@deck.gl/react';
 import { ScatterplotLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
+import axios from "axios";
 
 
 
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGFuaXNocW1pc2hyYSIsImEiOiJja2Nub2NxeDkwZGI0MnFsdmk3OXhmbHVqIn0.D978KZ8t0I6T_crSB_OvBQ';
+
+
 
 class Map extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            MAPBOX_ACCESS_TOKEN: '',
+
             data: [],
             viewport: {
                 ...DeckGL.defaultViewport,
@@ -23,6 +28,7 @@ class Map extends Component {
                 height: '71vh',
             },
         }
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -32,6 +38,13 @@ class Map extends Component {
     }
 
     componentDidMount() {
+        axios.get('/key').then(response => {
+            this.setState({
+                MAPBOX_ACCESS_TOKEN: response.data
+
+            })
+        });;
+
         window.addEventListener('resize', this._resize.bind(this));
         this._resize();
     }
@@ -51,6 +64,7 @@ class Map extends Component {
     }
 
     render() {
+
         const { viewport } = this.state;
 
         const layer = new ScatterplotLayer({
@@ -87,7 +101,7 @@ class Map extends Component {
                 >
                     <StaticMap
                         {...viewport}
-                        mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+                        mapboxApiAccessToken={this.state.MAPBOX_ACCESS_TOKEN}
                         mapStyle="mapbox://styles/mapbox/dark-v9"
                     />
                 </DeckGL>
