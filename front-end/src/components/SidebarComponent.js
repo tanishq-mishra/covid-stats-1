@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
+import Highlights from './HighlightsComponent';
 
 class Sidebar extends Component {
     constructor(props) {
@@ -12,11 +13,14 @@ class Sidebar extends Component {
         this.handleCLick = this.handleClick.bind(this);
     }
 
+
     handleClick(id) {
         this.setState({
             toggleDiv: id
         });
     }
+
+
 
     render() {
         const SideDiv = (props) => {
@@ -53,6 +57,7 @@ class Sidebar extends Component {
                             class={this.state.toggleDiv === "recovered" ? "selected" : "unselected"}
                         />
                     </Row>
+                    <Highlights toggle={this.state.toggleDiv} />
                 </Container>
             </Col>
         )

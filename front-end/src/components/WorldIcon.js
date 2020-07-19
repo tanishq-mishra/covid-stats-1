@@ -41,7 +41,7 @@ class WorldIcon extends Component {
                 </div>
                 <div className='world-data'>
                     <p>{title}</p>
-                    <h2><CountUp end={data} /></h2>
+                    <h2><CountUp end={data.toLocaleString()} /></h2>
 
 
                 </div>
