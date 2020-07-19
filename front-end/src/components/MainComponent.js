@@ -96,8 +96,6 @@ class Main extends Component {
                     <Sidebar />
                     <Hamburger />
                 </Row>
-                <Row>
-                </Row>
             </Container>
         )
     }

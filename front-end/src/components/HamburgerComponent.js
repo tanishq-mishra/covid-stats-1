@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class Hamburger extends Component {
-    //js code for animation of the hamburger 
     componentDidMount() {
         const menuBtn = document.querySelector('.menu-btn');
         let menuOpen = false;

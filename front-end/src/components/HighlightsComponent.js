@@ -21,6 +21,7 @@ class Highlights extends Component {
 
         })
     }
+
     sortByConfirmed() {
         var sort_order = -1;
 

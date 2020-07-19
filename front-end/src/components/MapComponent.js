@@ -6,11 +6,6 @@ import { ScatterplotLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
 import axios from "axios";
 
-
-
-
-
-
 class Map extends Component {
 
     constructor(props) {

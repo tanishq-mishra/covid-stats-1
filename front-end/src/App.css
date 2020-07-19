@@ -8,7 +8,7 @@ body {
 
 /* SVG Container */
 .world-data {
-  margin-left: 14px
+  margin-left: 14px;
 }
 
 .world-container {
@@ -58,8 +58,8 @@ body {
 }
 
 .unselected {
-  background-color: #282B2E;
-  color: #5A5D63;
+  background-color: #282b2e;
+  color: #5a5d63;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
@@ -67,13 +67,17 @@ body {
 }
 
 .selected {
-  background-color: #282B2E;
-  color: #F0F0F0;
+  background-color: #282b2e;
+  color: #f0f0f0;
   padding: 10px;
   text-align: center;
-  border-bottom: 2px solid #F6C879;
+  border-bottom: 2px solid #f6c879;
   border-radius: 5px;
   width: 6.25em;
+}
+
+.graph-container {
+  margin-top: 7vh;
 }
 
 /* Hamburger */
@@ -119,10 +123,8 @@ body {
   transform: rotate(-45deg) translate(35px, 35px);
 }
 
-
 /* Phone */
 @media only screen and (max-width: 767px) {
-
   /* Heading Component */
   .main-col {
     padding: 4vh 3vw 0 3vw;
@@ -167,11 +169,8 @@ body {
   }
 }
 
-
-
 /* iPad */
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
-
   /* Heading Component */
   .main-col {
     padding: 4vh 3vw 0 3vw;
@@ -220,9 +219,7 @@ body {
   }
 }
 
-
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
-
   /* Heading Component */
   .main-col {
     padding: 4vh 3vw 0 3vw;
@@ -275,10 +272,8 @@ body {
   }
 }
 
-
 /* Desktop */
 @media only screen and (min-width: 1400px) {
-
   /* Heading Component */
   .main-col {
     padding: 3vh 0 0 3vw;
