@@ -277,6 +277,36 @@ body.nav-active .nav__list-item:nth-child(4) {
   margin-top: 5vh;
 }
 
+.about-card {
+  width: 22vw;
+  border-radius: 25px;
+  background-color: #222529;
+  height: 50vh;
+  min-height: 350px;
+  min-width: 300px;
+}
+
+.about-card img {
+  width: 6vw;
+  min-width: 90px;
+  border-radius: 3vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.about-card div {
+  text-align: center;
+}
+
+hr {
+  background-color: #ffffff;
+  margin-top: 45vh;
+  width: 15vh;
+  -webkit-transform: rotate(90deg);
+}
 
 /* Phone */
 @media only screen and (max-width: 767px) {

@@ -18,7 +18,10 @@ class Menu extends Component {
             }
 
             const applyListeners = () => {
-                menu.addEventListener('click', () => { console.log('running'); return toggleClass(body, 'nav-active') });
+                menu.addEventListener('click', () => toggleClass(body, 'nav-active'));
+                menuItems[0].addEventListener('click', () => toggleClass(body, 'nav-active'));
+                menuItems[1].addEventListener('click', () => toggleClass(body, 'nav-active'));
+                menuItems[2].addEventListener('click', () => toggleClass(body, 'nav-active'));
             }
 
             const toggleClass = (element, stringClass) => {

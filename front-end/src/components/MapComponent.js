@@ -6,12 +6,14 @@ import { ScatterplotLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
 import axios from "axios";
 
+let key = '';
+
 class Map extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            MAPBOX_ACCESS_TOKEN: '',
+            MAPBOX_ACCESS_TOKEN: key,
 
             data: [],
             viewport: {
@@ -34,15 +36,18 @@ class Map extends Component {
 
     componentDidMount() {
         axios.get('/key').then(response => {
+            key = response.data;
+
             this.setState({
-                MAPBOX_ACCESS_TOKEN: response.data
+                MAPBOX_ACCESS_TOKEN: key
 
             })
-        });;
+        });
 
         window.addEventListener('resize', this._resize.bind(this));
         this._resize();
     }
+
 
     _resize() {
 
