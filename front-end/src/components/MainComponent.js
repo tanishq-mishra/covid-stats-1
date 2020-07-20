@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Map from './MapComponent'
 import '../App.css';
 import Sidebar from './SidebarComponent';
-import Hamburger from './HamburgerComponent';
+import Hamburger from './MenuComponent';
 import WorldIcon from './WorldIcon';
 import axios from 'axios';
 
@@ -94,7 +94,6 @@ class Main extends Component {
                         </Row>
                     </Col>
                     <Sidebar />
-                    <Hamburger />
                 </Row>
             </Container>
         )

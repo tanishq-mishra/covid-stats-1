@@ -19,7 +19,8 @@
     "react-dom": "^16.13.1",
     "react-map-gl": "^5.2.7",
     "react-scripts": "3.4.1",
-    "reactstrap": "^8.5.1"
+    "reactstrap": "^8.5.1",
+    "websocket-extensions": "^0.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
