@@ -44,6 +44,17 @@ body {
   float: right;
 }
 
+/* removing styling of menu items */
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .nav {
   position: fixed;
   z-index: 12;

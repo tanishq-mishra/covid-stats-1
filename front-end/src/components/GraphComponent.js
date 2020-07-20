@@ -100,6 +100,19 @@ class Graph extends Component {
                         },
                         autoSelected: "selection"
                     },
+                    animations: {
+                        enabled: true,
+                        easing: 'easeout',
+                        speed: 800,
+                        animateGradually: {
+                            enabled: true,
+                            delay: 150
+                        },
+                        dynamicAnimation: {
+                            enabled: true,
+                            speed: 350
+                        }
+                    }
                 },
                 colors: [colorGraph],
                 grid: {

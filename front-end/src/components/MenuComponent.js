@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Col, Row, Container } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class Menu extends Component {
 
@@ -45,10 +45,21 @@ class Menu extends Component {
                 <div className="nav">
                     <div className="nav__content">
                         <ul className="nav__list">
-                            <li className="nav__list-item">Home</li>
-                            <li className="nav__list-item">About</li>
-                            <li className="nav__list-item">Projects</li>
-                            <li className="nav__list-item">Contact</li>
+                            <li className="nav__list-item">
+                                <Link to="/home">
+                                    Home
+                                </Link>
+                            </li>
+                            <li className="nav__list-item">
+                                <Link to="/about">
+                                    About
+                                </Link>
+                            </li>
+                            <li className="nav__list-item">
+                                <Link to="/projects">
+                                    Projects
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

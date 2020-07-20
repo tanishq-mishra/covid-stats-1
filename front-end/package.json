@@ -18,6 +18,8 @@
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
     "react-map-gl": "^5.2.7",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.5.1",
     "websocket-extensions": "^0.1.4"
