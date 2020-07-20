@@ -77,7 +77,7 @@ body {
 }
 
 .graph-container {
-  margin-top: 7vh;
+  margin-top: 5vh;
 }
 
 /* Hamburger */
@@ -125,6 +125,7 @@ body {
 
 /* Phone */
 @media only screen and (max-width: 767px) {
+
   /* Heading Component */
   .main-col {
     padding: 4vh 3vw 0 3vw;
@@ -171,6 +172,7 @@ body {
 
 /* iPad */
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
+
   /* Heading Component */
   .main-col {
     padding: 4vh 3vw 0 3vw;
@@ -220,6 +222,7 @@ body {
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
   /* Heading Component */
   .main-col {
     padding: 4vh 3vw 0 3vw;
@@ -274,6 +277,7 @@ body {
 
 /* Desktop */
 @media only screen and (min-width: 1400px) {
+
   /* Heading Component */
   .main-col {
     padding: 3vh 0 0 3vw;

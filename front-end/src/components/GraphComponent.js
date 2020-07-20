@@ -18,8 +18,22 @@ class Graph extends Component {
 
         this.state = {
             series: [],
-            options: {},
-            toggle: 'infected'
+            options: {
+                chart: {
+                    height: 350,
+                    foreColor: "#222529",
+                },
+                grid: {
+                    show: false
+                },
+                xaxis: {
+                    axisBorder: {
+                        show: false
+                    }
+                }
+            },
+            toggle: 'infected',
+            show: false
         }
 
         axios.get('/graph').then(response => {
@@ -58,7 +72,9 @@ class Graph extends Component {
             displayData = recoveredDiff
             colorGraph = '#5CC1AC'
         }
+
         this.setState({
+            show: true,
             toggle: nextProps.toggle,
 
             series: [{
@@ -129,6 +145,9 @@ class Graph extends Component {
                         offsetX: 0,
                         offsetY: 0
                     },
+                    axisBorder: {
+                        show: true
+                    }
                 },
             },
         })
@@ -139,6 +158,7 @@ class Graph extends Component {
     render() {
         return (
             <div id="chart" className="graph-container">
+                {this.state.show && <div style={{ textAlign: "center" }}>World Data</div>}
                 <ReactApexChart options={this.state.options} series={this.state.series} type="area" height={300} />
             </div>
         );
