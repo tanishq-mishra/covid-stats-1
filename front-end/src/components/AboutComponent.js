@@ -11,6 +11,22 @@ function RenderCard(props) {
                 <Col xs={12}><div style={{ marginBottom: 6 }}>Fullstack Developer/ Flutter Developer</div></Col>
                 <Col xs={12}><div>{props.email}</div></Col>
             </Row>
+            <Row style={{ alignSelf: 'center', marginTop: '100px' }}>
+                <Col>
+                    <a href={props.github} target='blank'>
+                        <div className="social-button">
+                            <i class="fab fa-github fa-lg"></i>
+                        </div>
+                    </a>
+                </Col>
+                <Col>
+                    <a href={props.linkedin} target='blank'>
+                        <div className="social-button">
+                            <i class="fab fa-linkedin-in fa-lg"></i>
+                        </div>
+                    </a>
+                </Col>
+            </Row>
         </div>
     )
 }
@@ -19,11 +35,11 @@ function RenderCard(props) {
 function About() {
     return (
         <Container>
-            <h1 className="about-heading">Got to Know Us</h1>
+            <h1 className="about-heading">Get to Know Us</h1>
             <Row>
-                <Col lg={5} ><RenderCard img={'./images/Tanishq.jpg'} name='Tanishq Mishra' email='tanishqrmishra@gmail.com' /></Col>
+                <Col lg={5} ><RenderCard img={'./images/Tanishq.jpg'} name='Tanishq Mishra' email='tanishqrmishra@gmail.com' github='https://github.com/tanishq-mishra' linkedin='https://www.linkedin.com/in/tanishq-mishra-79861a34/' /></Col>
                 <Col lg={2} ><hr /></Col>
-                <Col lg={5} ><RenderCard img={'./images/Sakshi.jpg'} name='Sakshi Tomar' email='diyasakshi89@gmail.com' /></Col>
+                <Col lg={5} ><RenderCard img={'./images/Sakshi.jpg'} name='Sakshi Tomar' email='diyasakshi89@gmail.com' github='https://github.com/sakshi-0809' linkedin='https://www.linkedin.com/in/sakshi-tomar-52215a171/' /></Col>
             </Row>
         </Container>
     )

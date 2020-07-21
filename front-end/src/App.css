@@ -289,7 +289,9 @@ a:hover {
   max-width: 400px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20vh
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .about-card img {
@@ -306,6 +308,17 @@ a:hover {
 
 .about-card div {
   text-align: center;
+}
+
+.social-button {
+  height: 50px;
+  width: 120px;
+  background-color: #282b2e;
+  border-radius: 15px;
+}
+
+.fab {
+  margin-top: 15%;
 }
 
 hr {
