@@ -32,7 +32,9 @@ class Menu extends Component {
             }
 
             init();
-        })();
+        });
+
+        app();
     }
 
 

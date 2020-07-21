@@ -8,10 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 /* Menu */
-
-
 .menu-icon {
   height: 30px;
   width: 30px;
@@ -34,7 +31,6 @@ body {
   transition: transform 0.2s ease, background-color 0.5s ease, -webkit-transform 0.2s ease;
 }
 
-
 .menu-icon__line-left {
   width: 15px;
 }
@@ -42,17 +38,6 @@ body {
 .menu-icon__line-right {
   width: 15px;
   float: right;
-}
-
-/* removing styling of menu items */
-a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #ffffff;
 }
 
 .nav {
@@ -203,6 +188,17 @@ body.nav-active .nav__list-item:nth-child(4) {
   transition-delay: 0.9s;
 }
 
+/* removing styling of menu items */
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 /* SVG Container */
 .world-data {
   margin-left: 14px;
@@ -277,18 +273,29 @@ body.nav-active .nav__list-item:nth-child(4) {
   margin-top: 5vh;
 }
 
+.about-heading {
+  text-align: center;
+  margin-top: 5vh;
+}
+
 .about-card {
   width: 22vw;
   border-radius: 25px;
   background-color: #222529;
   height: 50vh;
-  min-height: 350px;
-  min-width: 300px;
+  min-height: 450px;
+  min-width: 350px;
+  max-height: 500px;
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20vh
 }
 
 .about-card img {
   width: 6vw;
   min-width: 90px;
+  max-width: 100px;
   border-radius: 3vw;
   display: block;
   margin-left: auto;
@@ -311,12 +318,11 @@ hr {
 /* Phone */
 @media only screen and (max-width: 767px) {
 
+  /* Menu */
   .menu-icon {
     width: 24px;
     height: 24px;
-    top: 6vh
   }
-
 
   .menu-icon__line {
     height: 1.6px;
@@ -330,7 +336,6 @@ hr {
     transition: transform 0.2s ease, background-color 0.5s ease, -webkit-transform 0.2s ease;
   }
 
-
   .menu-icon__line-left {
     width: 12px;
   }
@@ -340,14 +345,11 @@ hr {
     float: right;
   }
 
-
-
   .nav__list {
     padding-left: 20vw;
     padding-right: 0;
     text-align: left;
   }
-
 
   .nav__list-item {
     width: 100vw;
@@ -375,7 +377,15 @@ hr {
     padding-left: 15vw;
   }
 
+  .about-card {
+    margin-top: 10vh;
+  }
 
+  hr {
+    -webkit-transform: rotate(0deg);
+    margin-top: 10vh;
+    margin-bottom: 0;
+  }
 
   /* Map Container  */
   .map-container {
@@ -410,6 +420,15 @@ hr {
     padding-left: 7.5px;
   }
 
+  .about-card {
+    margin-top: 10vh;
+  }
+
+  hr {
+    -webkit-transform: rotate(0deg);
+    margin-top: 10vh;
+    margin-bottom: 0;
+  }
 
   /* Map Container  */
   .map-container {
@@ -422,6 +441,22 @@ hr {
 
   .map-inner-container {
     width: 67.5vw;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+  .about-card {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20vh
+  }
+
+  hr {
+    background-color: #ffffff;
+    margin-top: 45vh;
+    width: 13vh;
+    -webkit-transform: rotate(90deg);
   }
 }
 

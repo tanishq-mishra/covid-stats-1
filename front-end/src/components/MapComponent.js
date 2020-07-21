@@ -9,6 +9,7 @@ import axios from "axios";
 let key = '';
 
 class Map extends Component {
+    _isMounted = false;
 
     constructor(props) {
         super(props);
@@ -25,7 +26,6 @@ class Map extends Component {
                 height: '71vh',
             },
         }
-
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,22 +35,28 @@ class Map extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('/key').then(response => {
             key = response.data;
 
             this.setState({
                 MAPBOX_ACCESS_TOKEN: key
-
             })
         });
 
         window.addEventListener('resize', this._resize.bind(this));
-        this._resize();
+
+        if (this._isMounted) {
+            this._resize();
+        }
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 
     _resize() {
-
         this._onViewportChange({
             width: (window.innerWidth < 1200 || window.innerWidth > 1575) ? '95vw' : '70rem',
             height: window.innerWidth < 1200 ? '60vh' : window.innerHeight
