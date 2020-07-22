@@ -3,13 +3,17 @@ import { Switch, Route, BrowserRouter as Router, Redirect } from "react-router-d
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import About from './AboutComponent';
+import Splash from './SplashComponent';
 
 class Main extends Component {
     render() {
         return (
             <Router>
                 <>
-                    <div><Menu /></div>
+                    <Splash />
+                    <div>
+                        <Menu />
+                    </div>
                     <Switch>
                         <Route path='/home' component={Home} />
                         <Route path='/about' component={About} />
