@@ -1,11 +1,42 @@
 body {
   background-color: #282b2e;
-  top: 0;
-  bottom: 0;
   color: #ffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* News Container */
+
+.news-card {
+  background-color: #222529;
+  width: 350px;
+  height: 500px;
+  margin-top: 100px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.news-top {
+  overflow: hidden;
+  width: 350px;
+  height: 150px
+}
+
+.news-bottom {
+  padding: 10px;
+}
+
+
+
+.news-bottom h3 {
+  font-size: 1.5rem;
+}
+
+.news-card img {
+  width: 350px;
+  height: 200px
+}
+
 
 /* Menu */
 .menu-icon {
