@@ -34,14 +34,32 @@ function RenderCard(props) {
 
 function About() {
     return (
-        <Container>
+        <>
             <h1 className="about-heading">Get to Know Us</h1>
-            <Row>
-                <Col lg={5} ><RenderCard img={'./images/Tanishq.jpg'} name='Tanishq Mishra' email='tanishqrmishra@gmail.com' github='https://github.com/tanishq-mishra' linkedin='https://www.linkedin.com/in/tanishq-mishra-79861a34/' /></Col>
-                <Col lg={2} ><hr /></Col>
-                <Col lg={5} ><RenderCard img={'./images/Sakshi.jpg'} name='Sakshi Tomar' email='diyasakshi89@gmail.com' github='https://github.com/sakshi-0809' linkedin='https://www.linkedin.com/in/sakshi-tomar-52215a171/' /></Col>
-            </Row>
-        </Container>
+            <Container>
+                <Row>
+                    <Col lg={5} >
+                        <RenderCard
+                            img={'./images/Tanishq.jpg'}
+                            name='Tanishq Mishra'
+                            email='tanishqrmishra@gmail.com'
+                            github='https://github.com/tanishq-mishra'
+                            linkedin='https://www.linkedin.com/in/tanishq-mishra-79861a34/'
+                        />
+                    </Col>
+                    <Col lg={2} ><hr /></Col>
+                    <Col lg={5} >
+                        <RenderCard
+                            img={'./images/Sakshi.jpg'}
+                            name='Sakshi Tomar'
+                            email='diyasakshi89@gmail.com'
+                            github='https://github.com/sakshi-0809'
+                            linkedin='https://www.linkedin.com/in/sakshi-tomar-52215a171/'
+                        />
+                    </Col>
+                </Row>
+            </Container>
+        </>
     )
 }
 

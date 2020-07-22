@@ -20,7 +20,7 @@ class Graph extends Component {
             series: [],
             options: {
                 chart: {
-                    height: 350,
+                    height: 400,
                     foreColor: "#222529",
                 },
                 grid: {
@@ -83,7 +83,7 @@ class Graph extends Component {
             }],
             options: {
                 chart: {
-                    height: 350,
+                    height: 400,
                     type: 'area',
                     foreColor: '#fff',
                     toolbar: {

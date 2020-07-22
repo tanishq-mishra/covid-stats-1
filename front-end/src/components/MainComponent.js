@@ -8,14 +8,14 @@ class Main extends Component {
     render() {
         return (
             <Router>
-                <div>
-                    <Menu />
+                <>
+                    <div><Menu /></div>
                     <Switch>
                         <Route path='/home' component={Home} />
                         <Route path='/about' component={About} />
                         <Redirect to='/home' />
                     </Switch>
-                </div>
+                </>
             </Router>
         );
     }
