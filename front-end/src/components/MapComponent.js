@@ -40,9 +40,11 @@ class Map extends Component {
         axios.get('/key').then(response => {
             key = response.data;
 
-            this.setState({
-                MAPBOX_ACCESS_TOKEN: key
-            })
+            if (this._isMounted) {
+                this.setState({
+                    MAPBOX_ACCESS_TOKEN: key
+                })
+            }
         });
 
         window.addEventListener('resize', this._resize.bind(this));

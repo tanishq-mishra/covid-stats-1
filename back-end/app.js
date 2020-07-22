@@ -2,12 +2,12 @@ require('dotenv').config()
 const express = require('express');
 var request = require('request')
 const app = express();
+
 let countries = [];
 let historicData = {};
+let news = {};
 
 const port = 5000
-
-
 
 app.get('/countries', (req, res) => {
     request('https://www.trackcorona.live/api/countries', function (error, response, body) {
@@ -29,6 +29,26 @@ app.get('/graph', (req, res) => {
         if (response.statusCode == 200) {
             historicData = JSON.parse(body);
             res.send(historicData);
+        }
+    })
+})
+
+var date = new Date()
+date.setDate(date.getDate() - 7)
+
+const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date)
+const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(date)
+const d = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date)
+
+date = `${year}-${month}-${d}`
+
+app.get('/news', (req, res) => {
+    var url = `http://newsapi.org/v2/everything?q=covid&from=${date}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`
+
+    request(url, function (error, response, body) {
+        if (response.statusCode == 200) {
+            news = JSON.parse(body);
+            res.send(news);
         }
     })
 })

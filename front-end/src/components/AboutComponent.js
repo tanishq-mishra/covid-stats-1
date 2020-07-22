@@ -15,14 +15,14 @@ function RenderCard(props) {
                 <Col>
                     <a href={props.github} target='blank'>
                         <div className="social-button">
-                            <i class="fab fa-github fa-lg"></i>
+                            <i className="fab fa-github fa-lg"></i>
                         </div>
                     </a>
                 </Col>
                 <Col>
                     <a href={props.linkedin} target='blank'>
                         <div className="social-button">
-                            <i class="fab fa-linkedin-in fa-lg"></i>
+                            <i className="fab fa-linkedin-in fa-lg"></i>
                         </div>
                     </a>
                 </Col>

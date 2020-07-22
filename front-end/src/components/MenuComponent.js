@@ -66,18 +66,17 @@ class Menu extends Component {
                 <div className="nav">
                     <div className="nav__content nav__content-hidden">
                         <ul className="nav__list">
-
                             <Link to="/home">
                                 <li className="nav__list-item">Home</li>
                             </Link>
 
-                            <Link to="/about"><li className="nav__list-item">About</li></Link>
+                            <Link to="/about">
+                                <li className="nav__list-item">About</li>
+                            </Link>
 
-                            <Link to="/projects"><li className="nav__list-item">Projects</li></Link>
-
-
-
-
+                            <Link to='/news'>
+                                <li className="nav__list-item">News</li>
+                            </Link>
                         </ul>
                     </div>
                 </div>
