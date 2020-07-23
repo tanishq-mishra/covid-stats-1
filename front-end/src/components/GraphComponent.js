@@ -169,6 +169,7 @@ class Graph extends Component {
     }
 
     render() {
+
         return (
             <div id="chart" className="graph-container">
                 {this.state.show && <div style={{ textAlign: "center" }}>World Data</div>}

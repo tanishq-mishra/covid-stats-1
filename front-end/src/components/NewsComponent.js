@@ -50,11 +50,14 @@ class News extends Component {
         }
 
         return (
-            <Container>
-                <Row>
-                    <Cards />
-                </Row>
-            </Container>
+            <div className='news-container'>
+                <Container>
+                    <h1>Latest Updates</h1>
+                    <Row>
+                        <Cards />
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }
