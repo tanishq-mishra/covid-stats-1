@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function NewsCard({ article }) {
     return (
-        <Col md={6} xl={4}>
+        <Col md={6} xl={4} style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="news-card" >
                 <div className="news-top">
                     <img src={article.urlToImage}></img>
