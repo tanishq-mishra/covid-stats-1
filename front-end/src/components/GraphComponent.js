@@ -33,7 +33,8 @@ class Graph extends Component {
                 }
             },
             toggle: 'infected',
-            show: false
+            show: false,
+            initialUpdate: false
         }
 
         axios.get('/graph').then(response => {
@@ -164,11 +165,15 @@ class Graph extends Component {
                 },
             },
         })
-
-
     }
 
     render() {
+
+        if (this.state.initialUpdate === false) {
+            this.setState({
+                initialUpdate: true
+            })
+        }
 
         return (
             <div id="chart" className="graph-container">

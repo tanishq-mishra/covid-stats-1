@@ -1,5 +1,3 @@
-/// app.js
-
 import React, { Component } from 'react';
 import DeckGL from '@deck.gl/react';
 import { ScatterplotLayer } from '@deck.gl/layers';
@@ -72,7 +70,6 @@ class Map extends Component {
     }
 
     render() {
-
         const { viewport } = this.state;
 
         const layer = new ScatterplotLayer({
@@ -109,7 +106,7 @@ class Map extends Component {
                 >
                     <StaticMap
                         {...viewport}
-                        mapboxApiAccessToken={this.state.MAPBOX_ACCESS_TOKEN}
+                        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
                         mapStyle="mapbox://styles/mapbox/dark-v9"
                     />
                 </DeckGL>
