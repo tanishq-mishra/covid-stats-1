@@ -3,6 +3,7 @@ import { Container, Col, Row } from "reactstrap";
 import axios from 'axios';
 
 function NewsCard({ article }) {
+    const date = new Date(article.publishedAt);
     return (
         <Col md={6} xl={4} style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="news-card" >
@@ -15,7 +16,7 @@ function NewsCard({ article }) {
                     <p>{article.description.substring(0, 220)}...</p>
                     <div className="news-author">
                         <div>{article.author}</div>
-                        <div>{article.publishedAt}</div>
+                        <div>{date.toLocaleString()}</div>
                     </div>
                 </div>
             </div>
