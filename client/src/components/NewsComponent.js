@@ -36,7 +36,7 @@ class News extends Component {
     }
 
     componentDidMount() {
-        axios.get('/news').then(response => {
+        axios.get('/getNews').then(response => {
             this.setState({
                 data: response.data.articles
             })

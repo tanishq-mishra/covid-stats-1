@@ -50,7 +50,7 @@ const d = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date)
 
 date = `${year}-${month}-${d}`
 
-app.get('/news', (req, res) => {
+app.get('/getNews', (req, res) => {
     var url = `http://newsapi.org/v2/everything?qInTitle=coronavirus&sortBy=popularity&from=${date}&language=en&apiKey=${process.env.NEWS_API_KEY}`
 
     request(url, function (error, response, body) {
