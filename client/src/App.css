@@ -419,13 +419,14 @@ hr {
   }
 
   .nav__list-item {
+    font-size: 2rem;
     width: 100vw;
     margin-bottom: 5vh;
     justify-content: center;
   }
 
   .nav__list-item:hover:before {
-    width: 3.2rem;
+    width: 5.3rem;
   }
 
   /* Heading Component */
