@@ -386,17 +386,17 @@ hr {
 
   /* Menu */
   .menu-icon {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
     top: 2vh
   }
 
   .menu-icon__line {
-    height: 1.6px;
-    width: 24px;
+    height: 2.4px;
+    width: 36px;
     display: block;
     background-color: #ffffff;
-    margin-bottom: 3.2px;
+    margin-bottom: 4.8px;
     -webkit-transition: background-color 0.5s ease, -webkit-transform 0.2s ease;
     transition: background-color 0.5s ease, -webkit-transform 0.2s ease;
     transition: transform 0.2s ease, background-color 0.5s ease;
@@ -404,11 +404,11 @@ hr {
   }
 
   .menu-icon__line-left {
-    width: 12px;
+    width: 18px;
   }
 
   .menu-icon__line-right {
-    width: 12px;
+    width: 18px;
     float: right;
   }
 
@@ -513,6 +513,18 @@ hr {
   .map-inner-container {
     width: 67.5vw;
   }
+
+  /* Sidebar buttoms */
+
+  .selected {
+    width: 10rem;
+  }
+
+  .unselected {
+    width: 10rem;
+  }
+
+
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -529,6 +541,25 @@ hr {
     width: 13vh;
     -webkit-transform: rotate(90deg);
   }
+
+  /* Sidebar Buttons */
+
+  .selected {
+    width: 15rem;
+    font-size: 1.2rem;
+    height: 3.5rem
+  }
+
+  .unselected {
+    width: 15rem;
+    font-size: 1.2rem;
+    height: 3.5rem
+  }
+
+  .graph-container {
+    margin-bottom: 5px;
+  }
+
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
