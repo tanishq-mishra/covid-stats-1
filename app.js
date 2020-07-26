@@ -1,13 +1,21 @@
 require('dotenv').config()
 const express = require('express');
-var request = require('request')
+var request = require('request');
+const path = require('path')
+
 const app = express();
+
 
 let countries = [];
 let historicData = {};
 let news = {};
 
-const PORT = proccess.env.PORT || 5000
+const PORT = process.env.PORT || 5000
+
+app.get('/coutries', (req, res) => {
+    res.send('http://localhost:3000/')
+
+})
 
 app.get('/countries', (req, res) => {
     request('https://www.trackcorona.live/api/countries', function (error, response, body) {
@@ -53,8 +61,11 @@ app.get('/news', (req, res) => {
     })
 })
 
-if (proccess.env.NODE_ENV === 'Production') {
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
 
 }
 
