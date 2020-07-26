@@ -98,7 +98,7 @@ class Map extends Component {
                         return (
                             object &&
                             `${object.location}
-                            Infected - ${object.confirmed - object.dead - object.recovered}
+                            Active - ${object.confirmed - object.dead - object.recovered}
                             Recovered - ${object.recovered}
                             Deaths - ${object.dead}`
                         )
