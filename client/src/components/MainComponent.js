@@ -3,7 +3,6 @@ import { Switch, Route, BrowserRouter as Router, Redirect } from "react-router-d
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import About from './AboutComponent';
-import Splash from './SplashComponent';
 import News from './NewsComponent';
 
 class Main extends Component {
@@ -11,7 +10,6 @@ class Main extends Component {
         return (
             <Router>
                 <>
-                    <Splash />
                     <div>
                         <Menu />
                     </div>
