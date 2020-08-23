@@ -304,6 +304,7 @@ a:hover {
 }
 
 .unselected {
+  cursor: pointer;
   background-color: #282b2e;
   color: #5a5d63;
   padding: 10px;
@@ -313,6 +314,7 @@ a:hover {
 }
 
 .selected {
+  cursor: pointer;
   background-color: #282b2e;
   color: #f0f0f0;
   padding: 10px;
@@ -548,12 +550,14 @@ hr {
   /* Sidebar Buttons */
 
   .selected {
+    cursor: pointer;
     width: 15rem;
     font-size: 1.2rem;
     height: 3.5rem
   }
 
   .unselected {
+    cursor: pointer;
     width: 15rem;
     font-size: 1.2rem;
     height: 3.5rem
