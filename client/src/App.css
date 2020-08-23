@@ -518,10 +518,12 @@ hr {
   /* Sidebar buttoms */
 
   .selected {
+    cursor: pointer;
     width: 10rem;
   }
 
   .unselected {
+    cursor: pointer;
     width: 10rem;
   }
 
