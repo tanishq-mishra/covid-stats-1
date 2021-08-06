@@ -12,15 +12,21 @@ let news = {};
 
 const PORT = process.env.PORT || 5000
 
-app.get('/coutries', (req, res) => {
-    res.send('http://localhost:3000/')
+app.get('/world', (req, res) => {
+    request('https://disease.sh/v3/covid-19/all', function (error, response, body) {
+        if (response.statusCode == 200) {
+            world = JSON.parse(body);
+            res.send(world);
+        }
+    })
+
 
 })
 
 app.get('/countries', (req, res) => {
-    request('https://www.trackcorona.live/api/countries', function (error, response, body) {
+    request('https://disease.sh/v3/covid-19/countries', function (error, response, body) {
         if (response.statusCode == 200) {
-            countries = JSON.parse(body).data;
+            countries = JSON.parse(body);
             res.send(countries);
         }
     })

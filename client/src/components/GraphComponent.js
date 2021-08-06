@@ -49,10 +49,11 @@ class Graph extends Component {
             const deaths = Object.values(historicData.deaths);
             const recovered = Object.values(historicData.recovered);
 
-            for (var i = 0; i < dates.length; i++) {
-                confirmedDiff[i] = confirmed[i + 1] - confirmed[i];
-                deathsDiff[i] = deaths[i + 1] - deaths[i];
-                recoveredDiff[i] = recovered[i + 1] - recovered[i]
+            for (var i = 0; i < dates.length - 1; i++) {
+
+                confirmedDiff[i] = (confirmed[i + 1] - confirmed[i]) > 0 ? confirmed[i + 1] - confirmed[i] : 0;
+                deathsDiff[i] = (deaths[i + 1] - deaths[i]) > 0 ? deaths[i + 1] - deaths[i] : 0;
+                recoveredDiff[i] = (recovered[i + 1] - recovered[i]) > 0 ? recovered[i + 1] - recovered[i] : 0;
             }
         })
     }
