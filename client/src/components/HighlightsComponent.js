@@ -26,9 +26,9 @@ class Highlights extends Component {
         var sort_order = -1;
 
         return function (a, b) {
-            if (a["confirmed"] < b["confirmed"]) {
+            if (a["cases"] < b["cases"]) {
                 return -1 * sort_order;
-            } else if (a["confirmed"] > b["confirmed"]) {
+            } else if (a["cases"] > b["cases"]) {
                 return 1 * sort_order;
             } else {
                 return 0 * sort_order;
@@ -40,25 +40,25 @@ class Highlights extends Component {
         const HighlightsData = () => {
             return (this.state.data.map((country) => {
                 return (
-                    <Row key={country.country_code} >
+                    <Row key={country.countryInfo.iso2} >
                         <Col xs={1}>
                             <div className='flag-container' >
                                 <ReactCountryFlag
-                                    countryCode={country.country_code}
+                                    countryCode={country.countryInfo.iso2}
                                     svg
                                     cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
                                     cdnSuffix="svg"
-                                    title={country.location}
+                                    title={country.country}
                                     style={{ width: '20px', height: '20px', borderRadius: "100%" }}
                                 />
                             </div>
                         </Col>
                         <Col xs={6}>
-                            <p>{country.location}</p>
+                            <p>{country.country}</p>
                         </Col>
                         <Col xs={4} style={{ textAlign: 'right', paddingRight: 0 }}>
-                            {this.props.toggle === 'infected' && (country.confirmed - country.dead - country.recovered).toLocaleString()}
-                            {this.props.toggle === 'deaths' && country.dead.toLocaleString()}
+                            {this.props.toggle === 'infected' && (country.active).toLocaleString()}
+                            {this.props.toggle === 'deaths' && country.deaths.toLocaleString()}
                             {this.props.toggle === 'recovered' && country.recovered.toLocaleString()}
 
                         </Col>

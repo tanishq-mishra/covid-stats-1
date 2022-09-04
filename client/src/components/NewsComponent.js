@@ -4,24 +4,30 @@ import axios from 'axios';
 
 function NewsCard({ article }) {
     const date = new Date(article.publishedAt);
-    return (
-        <Col md={6} xl={4} style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className="news-card" >
-                <div className="news-top">
-                    <img src={article.urlToImage}></img>
-                    <div>button</div>
-                </div>
-                <div className="news-bottom">
-                    <h3><a href={article.url} target='blank'>{article.title}</a></h3>
-                    <p>{article.description.substring(0, 220)}...</p>
-                    <div className="news-author">
-                        <div>{article.author}</div>
-                        <div>{date.toLocaleString()}</div>
+    if (article.description === null) {
+        return <div></div>
+
+    }
+    else {
+        return (
+            <Col md={6} xl={4} style={{ display: 'flex', justifyContent: 'center' }}>
+                <div className="news-card" >
+                    <div className="news-top">
+                        <img src={article.urlToImage} alt={article.title}></img>
+                        <div>button</div>
+                    </div>
+                    <div className="news-bottom">
+                        <h3><a href={article.url} target='blank'>{article.title}</a></h3>
+                        <p>{article.description.substring(0, 220)}...</p>
+                        <div className="news-author">
+                            <div>{article.author}</div>
+                            <div>{date.toLocaleString()}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Col>
-    )
+            </Col>
+        )
+    }
 }
 
 class News extends Component {
@@ -36,7 +42,7 @@ class News extends Component {
     }
 
     componentDidMount() {
-        axios.get('/news').then(response => {
+        axios.get('/getNews').then(response => {
             this.setState({
                 data: response.data.articles
             })
@@ -45,8 +51,8 @@ class News extends Component {
 
     render() {
         const Cards = () => {
-            return this.state.data.map(article => {
-                return <NewsCard article={article} />
+            return this.state.data.map((article, index) => {
+                return <NewsCard article={article} key={index} />
             })
         }
 

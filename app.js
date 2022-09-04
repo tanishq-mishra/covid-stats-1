@@ -1,18 +1,32 @@
 require('dotenv').config()
 const express = require('express');
-var request = require('request')
+var request = require('request');
+const path = require('path')
+
 const app = express();
+
 
 let countries = [];
 let historicData = {};
 let news = {};
 
-const port = 5000
+const PORT = process.env.PORT || 5000
+
+app.get('/world', (req, res) => {
+    request('https://disease.sh/v3/covid-19/all', function (error, response, body) {
+        if (response.statusCode == 200) {
+            world = JSON.parse(body);
+            res.send(world);
+        }
+    })
+
+
+})
 
 app.get('/countries', (req, res) => {
-    request('https://www.trackcorona.live/api/countries', function (error, response, body) {
+    request('https://disease.sh/v3/covid-19/countries', function (error, response, body) {
         if (response.statusCode == 200) {
-            countries = JSON.parse(body).data;
+            countries = JSON.parse(body);
             res.send(countries);
         }
     })
@@ -42,7 +56,7 @@ const d = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date)
 
 date = `${year}-${month}-${d}`
 
-app.get('/news', (req, res) => {
+app.get('/getNews', (req, res) => {
     var url = `http://newsapi.org/v2/everything?qInTitle=coronavirus&sortBy=popularity&from=${date}&language=en&apiKey=${process.env.NEWS_API_KEY}`
 
     request(url, function (error, response, body) {
@@ -53,4 +67,12 @@ app.get('/news', (req, res) => {
     })
 })
 
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+
+}
+
+app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`))

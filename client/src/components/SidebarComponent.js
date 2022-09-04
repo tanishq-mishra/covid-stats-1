@@ -41,7 +41,7 @@ class Sidebar extends Component {
                     <Row className="sidebar-row">
                         <SideDiv
                             id={"infected"}
-                            name={"Infected"}
+                            name={"Active"}
                             class={this.state.toggleDiv === "infected" ? "selected" : "unselected"}
                         />
                         <SideDiv

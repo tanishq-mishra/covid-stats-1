@@ -82,9 +82,9 @@ class Map extends Component {
             lineWidthMinPixels: 1,
             radiusScale: 10,
             radiusMinPixels: 1,
-            getPosition: d => { return [d.longitude, d.latitude] },
-            getRadius: d => Math.sqrt(d.confirmed * 1000),
-            getFillColor: d => d.confirmed < 200000 ? [1, 164, 246] : [253, 62, 88]
+            getPosition: d => { return [d.countryInfo.long, d.countryInfo.lat] },
+            getRadius: d => Math.sqrt(d.cases * 500),
+            getFillColor: d => d.cases < 200000 ? [1, 164, 246] : [253, 62, 88]
         })
 
         return (
@@ -97,10 +97,11 @@ class Map extends Component {
                     getTooltip={({ object }) => {
                         return (
                             object &&
-                            `${object.location}
-                            Infected - ${object.confirmed - object.dead - object.recovered}
+                            `${object.country}
+                            Total - ${object.cases}
+                            Active - ${object.active}
                             Recovered - ${object.recovered}
-                            Deaths - ${object.dead}`
+                            Deaths - ${object.deaths}`
                         )
                     }}
                 >

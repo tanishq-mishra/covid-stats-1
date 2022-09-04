@@ -11,34 +11,31 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            countries: [],
             worldStats: {
                 confirmed: 0,
                 recovered: 0,
-                dead: 0
+                dead: 0,
+                active: 0
             }
         }
     }
 
     componentDidMount() {
-        axios.get('/countries').then(response => {
-            let c = 0;
-            let r = 0;
-            let de = 0;
-            response.data.map(d => {
-                c += d.confirmed;
-                r += d.recovered;
-                de += d.dead;
-                return 0;
+        axios.get('/world').then(response => {
+            this.setState({
+                worldStats: {
+                    confirmed: response.data.cases,
+                    recovered: response.data.recovered,
+                    dead: response.data.deaths,
+                    active: response.data.active
+                }
             })
 
+        })
+        axios.get('/countries').then(response => {
             this.setState({
-                data: response.data,
-                worldStats: {
-                    confirmed: c,
-                    recovered: r,
-                    dead: de
-                }
+                countries: response.data
             })
 
         })
@@ -65,7 +62,7 @@ class Main extends Component {
                             <Col md={6} lg={3}>
                                 <WorldIcon
                                     color='#F6C879'
-                                    data={this.state.worldStats.confirmed - this.state.worldStats.dead - this.state.worldStats.recovered}
+                                    data={this.state.worldStats.active}
                                     title='Active'
                                     svgSource='./images/virus.svg'
                                 />
@@ -89,7 +86,7 @@ class Main extends Component {
                         </Row>
 
                         <Row className='map-container'>
-                            <Map data={this.state.data} />
+                            <Map data={this.state.countries} />
                         </Row>
                     </Col>
                     <Sidebar />
